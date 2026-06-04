@@ -132,7 +132,7 @@ class FRM(nn.Module):
     def __init__(self,  d_model):
         super().__init__()
         self.d_model = d_model
-        self.channelAggregator = nn.MultiheadAttention(embed_dim=self.d_model, num_heads=4, batch_first=True,dropout=0.5)
+        self.channelAggregator = nn.MultiheadAttention(embed_dim=self.d_model, num_heads=4, batch_first=True,dropout=0.1)
         self.input_proj = nn.Sequential(nn.Linear(self.d_model, self.d_model),nn.GELU(),)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
