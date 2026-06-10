@@ -30,14 +30,12 @@ class SFM(nn.Module):
                 kernel_size=kernel_size,
                 padding=kernel_size // 2,  # "same" padding
             ),
-            nn.GELU(),
             nn.Conv1d(
                 in_channels=hidden_channels,
                 out_channels=1,
                 kernel_size=kernel_size,
                 padding=kernel_size // 2,
             ),
-            nn.GELU(),
             # nn.Conv1d(
             #     in_channels=hidden_channels,
             #     out_channels=1,
@@ -133,7 +131,7 @@ class FRM(nn.Module):
         super().__init__()
         self.d_model = d_model
         self.channelAggregator = nn.MultiheadAttention(embed_dim=self.d_model, num_heads=4, batch_first=True,dropout=0.1)
-        self.input_proj = nn.Sequential(nn.Linear(self.d_model, self.d_model),nn.GELU(),)
+        self.input_proj = nn.Sequential(nn.Linear(self.d_model, self.d_model))
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         x_attn_out = self.channelAggregator(query=x, key=x, value=x)[0] + x
