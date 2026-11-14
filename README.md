@@ -17,8 +17,7 @@ This repository is the official implementation of the paper **PARCNet: Phase-Awa
 - **Efficient**: the correction module is lightweight and adds little overhead;
 - **Strong performance**: consistently improves the forecasting accuracy of backbone models on multiple public benchmarks.
 
-![PARCNet framework](![Uploading image.png…]()
-)
+![PARCNet framework](Figures/Fig1.png)
 
 ## Citation
 
